@@ -1,16 +1,15 @@
 package primefactors;
 
-import java.math.BigDecimal;
+import primefactors.basicmath.BasicMath;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrimeFactorsGenerator {
-    public PrimeFactorsGenerator() {
-    }
 
     public static List<Integer> of(int n) {
-        ArrayList<Integer> factors = new ArrayList<Integer>();
-        int stop = integerSqrt(n);
+        ArrayList<Integer> factors = new ArrayList<>();
+        int stop = BasicMath.integerSqrt(n);
 
         for (int divisor = 2; n > stop; divisor++)
             for (; n % divisor == 0; n /= divisor)
@@ -20,7 +19,4 @@ public class PrimeFactorsGenerator {
         return factors;
     }
 
-    private static int integerSqrt(int n) {
-        return new BigDecimal(Double.toString(Math.sqrt(n))).intValue();
-    }
 }
