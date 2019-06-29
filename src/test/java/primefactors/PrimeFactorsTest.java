@@ -2,8 +2,6 @@ package primefactors;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,23 +23,7 @@ public class PrimeFactorsTest {
     }
 
     private void assertPrimeFactors(int n, List<Integer> primeFactors) {
-        assertEquals(primeFactors, of(n));
-    }
-
-    private List<Integer> of(int n) {
-        ArrayList<Integer> factors = new ArrayList<>();
-        int stop = integerSqrt(n);
-
-        for (int divisor = 2; n > stop; divisor++)
-            for (; n % divisor == 0; n /= divisor)
-                factors.add(divisor);
-        if (n > 1)
-            factors.add(n);
-        return factors;
-    }
-
-    private int integerSqrt(int n) {
-        return new BigDecimal(Double.toString(Math.sqrt(n))).intValue();
+        assertEquals(primeFactors, PrimeFactorsGenerator.of(n));
     }
 
     private List<Integer> list(Integer... numbers) {
